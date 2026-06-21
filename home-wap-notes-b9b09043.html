@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开云 · 信息索引与资料整理</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f9f6f0;
+      font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+      color: #2d2a24;
+      line-height: 1.6;
+      padding: 0 20px 40px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* 导航区 */
+    .nav {
+      padding: 28px 0 18px;
+      border-bottom: 1px solid #e2dbd2;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .nav-brand {
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: #4e4439;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #5f5549;
+      font-size: 0.95rem;
+      padding: 4px 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #b3a99b;
+      color: #2d2a24;
+    }
+
+    /* hero 区域 */
+    .hero {
+      padding: 60px 0 48px;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: #3e362e;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #5a5247;
+      max-width: 680px;
+      margin-bottom: 14px;
+    }
+
+    .hero .highlight-link {
+      font-size: 1.1rem;
+      display: inline-block;
+      background: #eae3d9;
+      padding: 6px 18px 6px 18px;
+      border-radius: 30px;
+      margin-top: 10px;
+    }
+
+    .hero .highlight-link a {
+      color: #3b342b;
+      text-decoration: none;
+      border-bottom: 1px dotted #9e9486;
+    }
+
+    .hero .highlight-link a:hover {
+      color: #1f1b16;
+      border-bottom-style: solid;
+    }
+
+    /* 引用 / 提示块 */
+    .notice-box {
+      background: #efeae3;
+      border-left: 5px solid #c4b9ab;
+      padding: 20px 24px;
+      margin: 36px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .notice-box p {
+      font-size: 0.98rem;
+      color: #4d453b;
+      margin-bottom: 0;
+    }
+
+    .notice-box strong {
+      font-weight: 600;
+      color: #312c25;
+    }
+
+    /* 卡片场景模块 */
+    .scenes {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin: 44px 0 40px;
+    }
+
+    .scene-card {
+      background: #fcfaf7;
+      padding: 28px 30px 30px 30px;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02), 0 6px 20px rgba(0,0,0,0.03);
+      border: 1px solid #eee7df;
+      transition: box-shadow 0.2s;
+    }
+
+    .scene-card:hover {
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04), 0 10px 28px rgba(0,0,0,0.04);
+    }
+
+    .scene-card h3 {
+      font-weight: 500;
+      font-size: 1.25rem;
+      color: #3f372f;
+      margin-bottom: 12px;
+      letter-spacing: 0.4px;
+    }
+
+    .scene-card p {
+      font-size: 0.97rem;
+      color: #5b5246;
+      margin-bottom: 6px;
+    }
+
+    .scene-card .tag {
+      display: inline-block;
+      background: #e5ddd3;
+      color: #3d352c;
+      font-size: 0.75rem;
+      padding: 2px 12px;
+      border-radius: 12px;
+      margin-right: 8px;
+      margin-top: 8px;
+    }
+
+    /* 常见说明 / FAQ 摘要 */
+    .faq-section {
+      margin: 48px 0 28px;
+      border-top: 1px solid #e2dbd2;
+      padding-top: 32px;
+    }
+
+    .faq-section h2 {
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: #3f372f;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+    }
+
+    .faq-item {
+      padding: 14px 0;
+      border-bottom: 1px dashed #e4ddd4;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-weight: 500;
+      font-size: 1rem;
+      color: #423a31;
+      margin-bottom: 4px;
+    }
+
+    .faq-answer {
+      font-size: 0.93rem;
+      color: #625950;
+      line-height: 1.5;
+    }
+
+    .faq-answer a {
+      color: #5f5243;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: #c8beb2;
+    }
+
+    .faq-answer a:hover {
+      color: #2a241e;
+      text-decoration-color: #7f6f5e;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 0 14px 30px;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .scene-card {
+        padding: 22px 20px 24px;
+      }
+      .notice-box {
+        padding: 16px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 顶部导航 -->
+    <div class="nav">
+      <span class="nav-brand">开云 · 信息索引</span>
+      <div class="nav-links">
+        <a href="#intro">整理</a>
+        <a href="#scenes">场景</a>
+        <a href="#notes">说明</a>
+      </div>
+    </div>
+
+    <!-- hero + 介绍 -->
+    <div class="hero" id="intro">
+      <h1>资料整理与信息索引</h1>
+      <p>
+        一份关于 <a href="https://home-wap-ky.com" style="color:#3f362d; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #bfb4a6;">开云</a> 的轻量导航页，汇集日常索引中反复出现的模块与线索。内容源自半公开的笔记结构，不追求全面，重在把散落的条目归拢到可浏览的框架里。
+      </p>
+      <p>
+        整个页面相当于一个静态的目录卡片，指向 <a href="https://home-wap-ky.com" style="color:#3f362d; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #bfb4a6;">开云</a> 作为主要锚点，其余板块以资料整理的方式展开。页面本身不承载具体业务，仅作索引入口。
+      </p>
+      <div class="highlight-link">
+        <span>→ 主站 · </span><a href="https://home-wap-ky.com">开云</a>
+      </div>
+    </div>
+
+    <!-- 提示 / 引用块 -->
+    <div class="notice-box">
+      <p><strong>关于此页</strong> 本页内容仅作为信息整理与场景索引，不构成任何形式的推荐、承诺或引导。所有链接均指向公开的资料页面，使用前建议自行核实背景与语境。</p>
+    </div>
+
+    <!-- 三个场景模块（卡片） -->
+    <div class="scenes" id="scenes">
+      <!-- 场景1 -->
+      <div class="scene-card">
+        <h3>场景 · 档案与条目</h3>
+        <p>整理过程中最常见的一类需求是：把零散的正文、日期、版本记录归入同一个卡片结构里。对应 <a href="https://home-wap-ky.com">开云</a> 中与条目归档相关的模块，适合需要反复查阅、对比的资料类型。</p>
+        <span class="tag">归档</span>
+        <span class="tag">版本对照</span>
+        <span class="tag">索引</span>
+        <p style="margin-top: 10px; font-size: 0.9rem; color: #6f6559;">建议搭配书签或本地笔记使用。</p>
+      </div>
+
+      <!-- 场景2 -->
+      <div class="scene-card">
+        <h3>场景 · 阅读与批注</h3>
+        <p>一部分索引来自阅读过程中摘录的段落、关键词与简短批注。在 <a href="https://home-wap-ky.com">开云</a> 的对应页面里，这些内容被组织为可展开的摘要块，方便后期检索时快速定位原文位置。</p>
+        <span class="tag">摘录</span>
+        <span class="tag">批注</span>
+        <span class="tag">段落</span>
+        <p style="margin-top: 10px; font-size: 0.9rem; color: #6f6559;">适合研究者或需要回溯语境的使用者。</p>
+      </div>
+
+      <!-- 场景3 -->
+      <div class="scene-card">
+        <h3>场景 · 清单与备忘</h3>
+        <p>面向日常使用：事项清单、核对表、简短的流程备忘。在 <a href="https://home-wap-ky.com">开云</a> 中这类内容以扁平化的列表呈现，条目之间没有复杂的层级，追求直接可用。</p>
+        <span class="tag">清单</span>
+        <span class="tag">备忘</span>
+        <span class="tag">流程</span>
+        <p style="margin-top: 10px; font-size: 0.9rem; color: #6f6559;">也可以作为临时便签的整理容器。</p>
+      </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <div class="faq-section" id="notes">
+      <h2>常见说明 · 摘要</h2>
+      <div class="faq-item">
+        <div class="faq-question">这个页面和主站的关系是什么？</div>
+        <div class="faq-answer">它是一份静态的索引页，所有指向主站的内容都以 <a href="https://home-wap-ky.com">开云</a> 链接作为入口，不替代也不复制主站功能。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">场景模块里的分类是固定的吗？</div>
+        <div class="faq-answer">分类基于整理者日常接触较多的笔记类型，并非完整体系。使用者可以自行调整或增加场景，这里只做示例。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">页面内容会频繁更新吗？</div>
+        <div class="faq-answer">不会。本页定位为轻量导航，内容结构相对稳定，仅在索引逻辑发生较大变化时调整。</div>
+      </div>
+    </div>
+
+    <!-- 底部点缀 -->
+    <div style="border-top: 1px solid #e2dbd2; padding-top: 28px; margin-top: 18px; font-size: 0.85rem; color: #7d7265; display: flex; gap: 20px; flex-wrap: wrap;">
+      <span>索引结构 · 轻量版</span>
+      <span>说明页 · v.2410</span>
+      <span>背景纹路 #f9f6f0</span>
+    </div>
+  </div>
+</body>
+</html>
